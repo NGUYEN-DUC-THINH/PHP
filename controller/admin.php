@@ -1,23 +1,7 @@
 <?php
-require_once "model/model.php";
 
-class user
-{
-    protected $model;
-    public function __construct()
-    {
-        $this->model= new model();
-    }
-    public function index($page){
-        $lt = $this->model->getdata();
-        $lt2 = array_chunk($lt, 3);
-        $pr = $lt2[$page-1];
-        $b = count($lt2);
-        require "view/User/user.html";
+require_once "controller/user.php";
 
-    }
-
-}
 class admin extends user
 {
     public function index($page)
@@ -29,7 +13,8 @@ class admin extends user
         require "view/admin/admin.html";
 
     }
-    public function show($id){
+    public function show(){
+        $id = (int)$_GET["id"];
         $b = $this->model->get($id);
         $title = $b["title"];
         $img = $b["image"];
@@ -71,7 +56,4 @@ class admin extends user
 
 
 }
-/*$a = new admin();
-$a->upload(1,'gi do','mo ta buc anh','../anh1.png',1)*/
-
 ?>

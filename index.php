@@ -1,12 +1,26 @@
 <?php
-require_once "controller/controller.php";
+require_once "controller/user.php";
+require_once "controller/admin.php";
 if (isset($_GET["controller"])){
     $con =$_GET["controller"];
 }
 else{
     $con ='user';
 }
-if($con == 'admin')
+$class = $con;
+$a = new $class();
+if (isset($_GET["action"])) {
+    $c = $_GET["action"];
+    }
+else{
+    $c ="addview";
+}
+if (isset($_GET["id"])) {
+    $d = $_GET["id"];
+}
+$a->$c();
+
+/*if($con == 'admin')
 {
     $a =new admin();
     if (isset($_GET["action"])) {
@@ -65,7 +79,6 @@ if($con == 'admin')
         }
         $a->index((int)$select1);
     }
-
 }
 
 else{
@@ -78,5 +91,5 @@ else{
     $a =new user();
     $a->index((int)$select1);
 }
-
+*/
 ?>
