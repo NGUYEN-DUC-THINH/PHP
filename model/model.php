@@ -29,7 +29,7 @@ class model
     }
     public function add($title,$des,$img,$status){
 
-        $this->data->DBreturn("INSERT INTO `table1`(`description`,`title`,`image`,`status`,`create_at`,`update_at`) VALUES ('".$title."','".$des."','".$img."','".$status."',NOW(),NOW())");
+        $this->data->DBreturn("INSERT INTO `table1`(`description`,`title`,`image`,`status`,`create_at`,`update_at`) VALUES ('".$des."','".$title."','".$img."','".$status."',NOW(),NOW())");
     }
     public function update($id,$title,$des,$status)
     {

@@ -40,7 +40,7 @@
 	</div>
 	<h2><center>Admin view</center></h2>
 	<div>
-		<a href="index.php?controller=admin&action=add" class="btn btn-info" role="button" style="margin-bottom:0.5%;margin-left:94.5%;">Add</a>
+		<a href="index.php?controller=admin&action=addview" class="btn btn-info" role="button" style="margin-bottom:0.5%;margin-left:94.5%;">Add</a>
 	</div>
 	<center>
 		<table class="table table-bordered">
@@ -64,18 +64,5 @@
 			?>
 	</table>
 	</center>
-	<form action="http://localhost/PHP/index.php?controller=admin" method="post" name ="sel">
-		<select name="page"  >
-			<option selected hidden value="1">Page</option>
-			<?php
-				for($x=1; $x<=$b; $x++){
-				?>
-				<option value=<?php echo $x; ?>> <?php echo $x ?></option>
-				<?php
-				}
-			?>
-		</select>
-		<input type="submit" name="submit" value="Go"/>
-	</form>
 </body>
 </html>

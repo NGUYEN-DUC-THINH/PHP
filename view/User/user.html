@@ -60,18 +60,5 @@
 			?>
 	</table>
 	</center>
-	<form action="http://localhost/PHP/index.php" method="post" name ="sel">
-		<select name="page"  >
-			<option selected hidden value="1">Page</option>
-			<?php
-				for($x=1; $x<=$b; $x++){
-				?>
-				<option value=<?php echo $x; ?>> <?php echo $x ?></option>
-				<?php
-				}
-			?>
-		</select>
-		<input type="submit" name="submit" value="Go"/>
-	</form>
 </body>
 </html>

@@ -8,11 +8,8 @@ class user
     {
         $this->model= new model();
     }
-    public function index($page){
-        $lt = $this->model->getdata();
-        $lt2 = array_chunk($lt, 3);
-        $pr = $lt2[$page-1];
-        $b = count($lt2);
+    public function index(){
+        $pr = $this->model->getdata();
         require "view/User/user.html";
 
     }

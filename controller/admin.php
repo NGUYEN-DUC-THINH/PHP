@@ -4,12 +4,9 @@ require_once "controller/user.php";
 
 class admin extends user
 {
-    public function index($page)
+    public function index()
     {
-        $lt = $this->model->getdata();
-        $lt2 = array_chunk($lt, 3);
-        $pr = $lt2[$page - 1];
-        $b = count($lt2);
+        $pr = $this->model->getdata();
         require "view/admin/admin.html";
 
     }
@@ -29,29 +26,43 @@ class admin extends user
         };
         require "view/admin/show.html";
     }
-    public function del($id,$page){
+    public function delete(){
+        $id = (int)$_GET["id"];
         $this->model->delete($id);
-        $lt = $this->model->getdata();
-        $lt2 = array_chunk($lt, 3);
-        $pr = $lt2[$page - 1];
-        $b = count($lt2);
+        $pr = $this->model->getdata();
         require_once "view/admin/admin.html";
     }
-    public function edit($id){
+    public function edit(){
+        $id = (int)$_GET["id"];
         $b = $this->model->get($id);
         $img = $b["image"];
         require "view/admin/edit.html";
-        return $img;
+        //return $img;
     }
-    public function upload($id,$title,$des,$status){
+    public function upload(){
+        if (isset($_POST['upload'])){
+            $id = $_GET['id'];
+            $title = $_POST["Title"];
+            $des = $_POST["Description"];
+            $status = $_POST["status"];
+            }
         $this->model->update($id,$title,$des,$status);
-        $this->index(1);
+        $this->index();
     }
     public function addview(){
         require_once "view/admin/add.html";
     }
-    public function add($title,$des,$img,$status){
-        $this->model->add($title,$des,$img,$status);
+    public function add(){
+        if(isset($_POST["add"]))
+        {
+            $title = $_POST["Title"];
+            $img = $_POST["myfile"];
+            $des = $_POST["Description"];
+            $status = $_POST["status"];
+            $this->model->add($title,$des,$img,$status);
+            $this->index();
+        }
+
     }
 
 
